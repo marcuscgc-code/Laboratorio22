@@ -1,5 +1,6 @@
 package entity;
 
-public class EntidadeBase {
+public interface EntidadeBase {
     Integer getId();
 }
+

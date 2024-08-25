@@ -1,13 +1,15 @@
 package entity;
-import lombok.*;
-import javax.persistence.*;
 
+import lombok.*;
+
+import javax.persistence.*;
 
 @Getter @Setter @Builder
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Cliente {
+public class Cliente implements EntidadeBase {
+
     @EqualsAndHashCode.Include
     @Id
     private String cpf;
@@ -16,18 +18,8 @@ public class Cliente {
 
     private Boolean ativo;
 
-    @ManyToOne
-    @JoinColumn(name = "cpf")
-    private PessoaFisica pessoaFisica;
-
     @Override
-    public String toString() {
-        return "Cliente{" +
-                "cpf='" + cpf + '\'' +
-                ", contato='" + contato + '\'' +
-                ", ativo=" + ativo +
-                ", pessoaFisica=" + pessoaFisica +
-                '}';
+    public Integer getId() {
+        return cpf != null ? cpf.hashCode() : null;
     }
-
 }

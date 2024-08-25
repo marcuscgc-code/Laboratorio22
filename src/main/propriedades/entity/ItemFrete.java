@@ -1,4 +1,5 @@
 package entity;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,7 +8,8 @@ import javax.persistence.*;
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class ItemFrete {
+public class ItemFrete implements EntidadeBase {
+
     @EqualsAndHashCode.Include
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -21,12 +23,7 @@ public class ItemFrete {
     private Frete frete;
 
     @Override
-    public String toString() {
-        return "ItemFrete{" +
-                "id=" + id +
-                ", descricao='" + descricao + '\'' +
-                ", peso=" + peso +
-                ", frete=" + frete +
-                '}';
+    public Integer getId() {
+        return id;
     }
 }

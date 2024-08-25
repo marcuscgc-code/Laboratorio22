@@ -1,4 +1,5 @@
 package entity;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,7 +8,8 @@ import javax.persistence.*;
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Veiculo {
+public class Veiculo implements EntidadeBase {
+
     @EqualsAndHashCode.Include
     @Id
     private String numeroPlaca;
@@ -21,11 +23,7 @@ public class Veiculo {
     private TipoVeiculo tipoVeiculo;
 
     @Override
-    public String toString() {
-        return "Veiculo{" +
-                "numeroPlaca='" + numeroPlaca + '\'' +
-                ", filial=" + filial +
-                ", tipoVeiculo=" + tipoVeiculo +
-                '}';
+    public Integer getId() {
+        return numeroPlaca != null ? numeroPlaca.hashCode() : null;
     }
 }

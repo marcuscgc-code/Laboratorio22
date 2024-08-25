@@ -1,16 +1,16 @@
 package entity;
+
 import lombok.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
-@Getter @Setter
-@Builder
+
+@Getter @Setter @Builder
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @IdClass(Distancia.DistanciaId.class)
-
-//INCOMPLETO
-public class Distancia {
+public class Distancia implements EntidadeBase {
 
     @EqualsAndHashCode.Include
     @Id
@@ -30,15 +30,13 @@ public class Distancia {
     })
     private Cidade cidadeDestino;
 
-    private Float distanciaKm;
+    private Integer quilometros;
 
     @Override
-    public String toString() {
-        return "Distancia{" +
-                "cidadeOrigem=" + cidadeOrigem +
-                ", cidadeDestino=" + cidadeDestino +
-                ", distanciaKm=" + distanciaKm +
-                '}';
+    public Integer getId() {
+        // Usando um hashcode das chaves compostas para representar o ID
+        return (cidadeOrigem.getUf() + cidadeOrigem.getNome() +
+                cidadeDestino.getUf() + cidadeDestino.getNome()).hashCode();
     }
 
     @Data @NoArgsConstructor @AllArgsConstructor
@@ -48,7 +46,4 @@ public class Distancia {
         private String cidadeDestinoUf;
         private String cidadeDestinoNome;
     }
-
-
-    
 }

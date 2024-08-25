@@ -1,28 +1,35 @@
 package entity;
 
 import lombok.*;
+
 import javax.persistence.*;
-@Getter @Setter @Builder //construtor
+import java.io.Serializable;
+
+@Getter @Setter @Builder
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Cidade {
+@IdClass(Cidade.CidadeId.class)
+public class Cidade implements EntidadeBase {
+
     @EqualsAndHashCode.Include
     @Id
-
     private String uf;
 
     @EqualsAndHashCode.Include
     @Id
     private String nome;
+
     private String estado;
 
     @Override
-    public String toString(){
-        return  "cidade{" +
-                "uf='" + uf +'\'' +
-                ", nome='"+ nome + '\'' +
-                ", estado='" + estado +  '\'' +
-                '}';
+    public Integer getId() {
+        return (uf + nome).hashCode();
+    }
+
+    @Data @NoArgsConstructor @AllArgsConstructor
+    public static class CidadeId implements Serializable {
+        private String uf;
+        private String nome;
     }
 }

@@ -8,8 +8,8 @@ import javax.persistence.*;
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+public class Funcionario implements EntidadeBase {
 
-public class Funcionario {
     @EqualsAndHashCode.Include
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer matricula;
@@ -19,10 +19,7 @@ public class Funcionario {
     private PessoaFisica pessoaFisica;
 
     @Override
-    public String toString() {
-        return "Funcionario{" +
-                "matricula=" + matricula +
-                ", pessoaFisica=" + pessoaFisica +
-                '}';
+    public Integer getId() {
+        return matricula;
     }
 }

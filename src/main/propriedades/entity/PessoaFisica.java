@@ -8,7 +8,7 @@ import javax.persistence.*;
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class PessoaFisica {
+public class PessoaFisica implements EntidadeBase {
 
     @EqualsAndHashCode.Include
     @Id
@@ -21,13 +21,8 @@ public class PessoaFisica {
     private String telefone;
 
     @Override
-    public String toString() {
-        return "PessoaFisica{" +
-                "cpf='" + cpf + '\'' +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
-                '}';
+    public Integer getId() {
+        // Considerando que CPF é a chave primária, podemos retornar um hashcode como id único.
+        return cpf != null ? cpf.hashCode() : null;
     }
 }
-

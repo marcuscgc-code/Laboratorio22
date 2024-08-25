@@ -1,21 +1,22 @@
 package entity;
+
 import lombok.*;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
+
 @Getter @Setter @Builder
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+public class Frete implements EntidadeBase {
 
-//INCOMPLETO
-public class Frete{
     @EqualsAndHashCode.Include
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
     private Integer numeroNotaFiscal;
 
-    private BigDecimal valorKmRodado;
+    private Float valorKmRodado;
 
     @ManyToOne
     @JoinColumn(name = "tipoVeiculoId")
@@ -40,15 +41,7 @@ public class Frete{
     private Cidade cidadeDestino;
 
     @Override
-    public String toString() {
-        return "Frete{" +
-                "codigo=" + codigo +
-                ", numeroNotaFiscal=" + numeroNotaFiscal +
-                ", valorKmRodado=" + valorKmRodado +
-                ", tipoVeiculo=" + tipoVeiculo +
-                ", categoriaFrete=" + categoriaFrete +
-                ", cidadeOrigem=" + cidadeOrigem +
-                ", cidadeDestino=" + cidadeDestino +
-                '}';
+    public Integer getId() {
+        return codigo;
     }
 }

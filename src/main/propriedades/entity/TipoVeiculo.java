@@ -1,12 +1,15 @@
 package entity;
+
 import lombok.*;
+
 import javax.persistence.*;
 
-@Getter @Setter @Builder // gera construtores mais simples
+@Getter @Setter @Builder
 @NoArgsConstructor @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class TipoVeiculo {
+public class TipoVeiculo implements EntidadeBase {
+
     @EqualsAndHashCode.Include
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -16,12 +19,7 @@ public class TipoVeiculo {
     private Float pesoMaximo;
 
     @Override
-    public String toString() {
-        return "TipoVeiculo{" +
-                "id=" + id +
-                ", descricao='" + descricao + '\'' +
-                ", pesoMaximo=" + pesoMaximo +
-                '}';
+    public Integer getId() {
+        return id;
     }
 }
-
