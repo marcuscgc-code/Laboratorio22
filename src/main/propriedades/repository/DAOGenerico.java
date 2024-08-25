@@ -1,11 +1,9 @@
 package repository;
 
-import entity.EntidadeBase;
 import javax.persistence.EntityManager;
 import java.util.Objects;
-
-class DAOGenerico<T extends EntidadeBase> {
-
+import entity.EntidadeBase;
+public class DAOGenerico<T extends EntidadeBase> {
     private final EntityManager manager;
 
     DAOGenerico(EntityManager manager) {
