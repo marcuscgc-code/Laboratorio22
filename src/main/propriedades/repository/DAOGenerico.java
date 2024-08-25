@@ -1,29 +1,37 @@
 package repository;
 
+import entity.EntidadeBase;
+
 import javax.persistence.EntityManager;
 import java.util.Objects;
-import entity.EntidadeBase;
+
 public class DAOGenerico<T extends EntidadeBase> {
+
     private final EntityManager manager;
 
-    DAOGenerico(EntityManager manager) {
+    public DAOGenerico(EntityManager manager) {
         this.manager = manager;
     }
 
-    T buscaPorId(Class<T> clazz, Integer id) {
+    public T buscaPorId(Class<T> clazz, Integer id) {
         return manager.find(clazz, id);
     }
 
-    T salvaOuAtualiza(T t) {
-        if( Objects.isNull(t.getId()) )
+    public T salvaOuAtualiza(T t) {
+        if(Objects.isNull(t.getId())) {
             this.manager.persist(t);
-        else
+        } else {
             t = this.manager.merge(t);
+        }
         return t;
     }
 
-    void remove(T t) {
+    public void remove(T t) {
         manager.remove(t);
         manager.flush();
+    }
+
+    public EntityManager getManager() {
+        return manager;
     }
 }

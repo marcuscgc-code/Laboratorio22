@@ -6,6 +6,8 @@ import entity.Cliente;
 import entity.Distancia;
 import entity.CategoriaFrete;
 import repository.DAOGenerico;
+import java.util.Date;
+
 
 import javax.persistence.EntityManager;
 import java.util.List;
