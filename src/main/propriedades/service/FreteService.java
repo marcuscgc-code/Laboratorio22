@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 
 import entity.Frete;
@@ -6,7 +6,6 @@ import entity.Cliente;
 import entity.Distancia;
 import entity.CategoriaFrete;
 import repository.DAOGenerico;
-import java.util.Date;
 
 
 import javax.persistence.EntityManager;
